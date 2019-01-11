@@ -13,7 +13,10 @@
 #import "WBPopOverView.h"
 //5
 #import "MMTimerViewController.h"
-
+//6
+#import "MAThreeTimersVC.h"
+//7
+#import "WMAnimationViewController.h"
 @interface WMMainViewController ()<WMPopViewControllerDelegate>
 
 @property (nonatomic, strong) WMPopViewController *popV;
@@ -31,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    for (int i=0; i<6; i++) {
+    for (int i=0; i<8; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn addTarget:self action:@selector(clickButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [btn setBackgroundColor:[UIColor redColor]];
@@ -91,6 +94,16 @@
         case 5:
         {//定时器
             [self action5];
+        }
+            break;
+        case 6:
+        {//三种定时器
+            [self action6];
+        }
+            break;
+        case 7:
+        {//CAAnimation
+            [self action7];
         }
             break;
         default:
@@ -165,6 +178,20 @@
     MMTimerViewController *timerVC = [[MMTimerViewController alloc]init];
     timerVC.view.backgroundColor = [UIColor whiteColor];
     [self presentViewController:timerVC animated:YES completion:nil];
+}
+
+-(void)action6
+{
+    MAThreeTimersVC *timerVC = [[MAThreeTimersVC alloc]init];
+    timerVC.view.backgroundColor = [UIColor whiteColor];
+    [self presentViewController:timerVC animated:YES completion:nil];
+}
+
+-(void)action7
+{
+    WMAnimationViewController *vc = [[WMAnimationViewController alloc]init];
+    vc.view.backgroundColor = [UIColor whiteColor];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end
